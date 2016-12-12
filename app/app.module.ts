@@ -11,6 +11,7 @@ import { UserPanelComponent } from './components/userpanel.component';
 import { DashboardComponent } from './components/dashboard.component';
 import { MarkdownComponent } from './components/markdown.component';
 import { EntryViewerComponent } from './components/entry-viewer.component';
+import { PresentationComponent } from './components/presentation.component';
 import { DataService } from './services/data.service';
 
 import * as router from '@angular/router';
@@ -25,7 +26,8 @@ import * as router from '@angular/router';
                   UserPanelComponent, 
                   DashboardComponent,
                   EntryViewerComponent,
-                  MarkdownComponent
+                  MarkdownComponent,
+                  PresentationComponent
                 ],
   providers:    [
     DataService,

@@ -22,6 +22,11 @@ export class EntryViewerComponent  {
         
     }
 
+    /**
+     * Minimal height of the entry viewer component.
+     * If it is a pdf file, the minHeight will grow  when the card component is
+     * revealed. 
+     */
     get minHeight() {
         var minHeight = this._expanded ? "800px" : "200px"
         var value = this.entry.content.contentType == ContentType.PDFDocumentURL ? minHeight : "200px"

@@ -3,7 +3,7 @@
 
         <div class="card sticky-action">
             <div class="card-image waves-effect waves-block waves-light">
-                <img (click)="toogleExpand()" class="activator" height="200px" src="http://materializecss.com/images/sample-1.jpg">
+                <img (click)="toogleExpand()" class="activator" height="200px" [src]="sanitizeRessourceUrl(entry.thumbnailUrl)">
             </div>
             
             <div class="card-content" [style.min-height]="minHeight">

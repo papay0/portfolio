@@ -3,10 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent }  from './components/app.component';
 import { UserPanelComponent } from './components/userpanel.component';
 import { DashboardComponent } from './components/dashboard.component';
+import { PresentationComponent } from './components/presentation.component';
 
 const appRoutes: Routes = [
-  { path: 'categories/:category', component: DashboardComponent },
-  { path: '**', component: DashboardComponent }
+  { path: 'portfolio', component: DashboardComponent },
+  { path: 'portfolio/:filter/:value', component: DashboardComponent },
+  { path: 'presentation', component: PresentationComponent },
+  { path: '**', component: PresentationComponent  }
 ];
 
 @NgModule({
