@@ -5,7 +5,7 @@ import { UserPanelComponent } from './components/userpanel.component';
 import { DashboardComponent } from './components/dashboard.component';
 
 const appRoutes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'categories/:category', component: DashboardComponent },
   { path: '**', component: DashboardComponent }
 ];
 

@@ -1,4 +1,5 @@
-import { Component, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, trigger,
+         state, style, transition, animate } from '@angular/core';
 import { Http, Response }   from '@angular/http';
 import { Observable }       from 'rxjs/Observable';
 import { DataService }      from '../services/data.service'
@@ -12,16 +13,18 @@ import { DomSanitizer, SafeHtml,SafeUrl,SafeStyle } from '@angular/platform-brow
 
 export class EntryViewerComponent  { 
     @Input("entry") entry : Entry;
-    
+    @ViewChild("viewer") viewer : ElementRef;
+
     public contentType = ContentType
     public experienceType = ExperienceType
-
+    private _expanded : boolean = false;
     constructor(private sanitizer : DomSanitizer, private dataService : DataService) {        
         
     }
 
     get minHeight() {
-        var value = this.entry.content.contentType == ContentType.PDFDocumentURL ? "800px" : "200px"
+        var minHeight = this._expanded ? "800px" : "200px"
+        var value = this.entry.content.contentType == ContentType.PDFDocumentURL ? minHeight : "200px"
         return this.sanitizer.bypassSecurityTrustStyle(value)
     }
 
@@ -31,5 +34,9 @@ export class EntryViewerComponent  {
 
     sanitizeUrl(url : string) : SafeUrl {
         return this.sanitizer.bypassSecurityTrustUrl(url)
+    }
+
+    toogleExpand() {
+        this._expanded = !this._expanded
     }
 }
