@@ -2,8 +2,39 @@
     <br />
     <br />
     <br />
-    <div *ngFor="let entry of entries">
-        <entry-viewer [entry]="entry"></entry-viewer>
+    
+    <div class="row">
+        <div class="valign-wrapper">
+            <div class="col s4 m2 l1 valign left-align"><b>Sort By :</b></div>
+            <div *ngFor="let filter of filters;" class="col valign left-align">
+                <a  [routerLink]="['/portfolio/', filter.name, 'all']"
+                    class="btn waves-effect waves-light valign">
+                {{filter.displayName}} 
+                </a>
+            </div>
+        </div>
     </div>
+    
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab" >
+                    <a href [routerLink] = "['/portfolio/', filterName, 'all']">See all</a>
+                </li>
+                <li class="tab animated bounceIn"  *ngFor="let category of categories">
+                    <a href [routerLink]="['/portfolio/', filterName, category]">{{category}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col s12" *ngFor="let entry of entries">
+            <div *ngIf="isActive(entry)" [@isActive]="isActive(entry)">
+                <entry-viewer [entry]="entry"></entry-viewer>
+            </div>
+        </div>
+    </div>
+    
+
+
+
     <br />
 </div>

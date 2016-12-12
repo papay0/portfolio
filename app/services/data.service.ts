@@ -4,8 +4,7 @@ import { Observable }       from 'rxjs/Rx';
 import { Inject }           from '@angular/core';
 import { library, Library }          from '../entries/common' 
 
-import '../entries/wireless-networks'
-import '../entries/dummy'
+import '../entries/index'
 
 @Injectable()
 export class DataService {

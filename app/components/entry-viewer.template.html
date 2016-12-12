@@ -3,11 +3,11 @@
 
         <div class="card sticky-action">
             <div class="card-image waves-effect waves-block waves-light">
-                <div class="image-aspect-ratio" style="background-image: url('http://materializecss.com/images/sample-1.jpg');"></div>
+                <img (click)="toogleExpand()" class="image-aspect-ratio activator" height="200px" [style.background-image]="sanitizeRessourceUrl(entry.thumbnailUrl)" />
             </div>
             
             <div class="card-content" [style.min-height]="minHeight">
-                <span class="card-title activator grey-text text-darken-4">{{entry.name}}<i class="material-icons right">click for details</i></span>
+                <span (click)="toogleExpand()" class="card-title activator grey-text text-darken-4">{{entry.name}}<i class="material-icons right">click for details</i></span>
                 <h5>Abstract</h5>
                 <markdown [data]="entry.abstract">
                 </markdown>
@@ -16,10 +16,11 @@
             </div>
 
             <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">{{entry.name}}<i class="material-icons right">close</i></span>
+                <span (click)="toogleExpand()" class="card-title grey-text text-darken-4">{{entry.name}}<i class="material-icons right">close</i></span>
 
                 <!-- PDF Document -->
                 <div *ngIf="entry.content.contentType == contentType.PDFDocumentURL">
+                    
                     <div style="text-align: center" class="margin-bottom: 1em;">
                         <a class="waves-effect waves-light btn" 
                         target="_blank"
